@@ -1,6 +1,23 @@
 import requests
+from Employee import Employee
 
 isOpen = True
+def addEmployee(name,id):
+    employee= Employee(name,id)
+def getEmployeeById(id):
+
+def getEmployeeByName(name):
+
+def getAllEmployees():
+
+def updateEmployee(name,id):
+
+def deleteEmployee(name):
+
+def importEmployeesFromCsv():
+
+
+def exportEmployeesToCsv():
 
 
 functions = {
@@ -18,10 +35,6 @@ functions = {
 
 def printMenu():
     pass
-def addEmployee(name,id):
-
-
-
 
 def main():
     print("Welcome")
