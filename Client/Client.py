@@ -67,6 +67,7 @@ def main():
     while(isOpen):
         printMenu()
         choice = int(input())
+        testServer()
 
 if __name__ == "__main__":
     main()
