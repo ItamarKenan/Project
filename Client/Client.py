@@ -1,13 +1,23 @@
+import json
+
 import requests
 from Employee import Employee
 
 isOpen = True
+url="http://127.0.0.1:5000"
 
 def testServer():
-    print(requests.get(url='/test').text)
+    print(requests.get(url=url+'/test').text)
     pass
-def addEmployee(name,id):
-    employee= Employee(name,id)
+def addEmployee():
+    details = str(input("Enter employee details: (name, id, age) ")).split(" ")
+    employee = Employee("Itamar","0","0")
+    employee.setName(details[0])
+    employee.setId(int(details[1]))
+    employee.setAge(int(details[2]))
+    requests.post(url + "/addEmployee",json=employee.__json__())
+
+
 
 def getEmployeeById(id):
     pass
@@ -30,6 +40,9 @@ def importEmployeesFromCsv():
 
 def exportEmployeesToCsv():
     pass
+def exitMenu():
+    isOpen=False
+    pass
 
 
 functions = {
@@ -42,7 +55,7 @@ functions = {
     6: deleteEmployee,
     7: importEmployeesFromCsv,
     8: exportEmployeesToCsv,
-    9: exit
+    9: exitMenu
 }
 
 
@@ -67,7 +80,8 @@ def main():
     while(isOpen):
         printMenu()
         choice = int(input())
-        testServer()
+        func = functions[choice]
+        func()
 
 if __name__ == "__main__":
     main()
